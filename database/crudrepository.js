@@ -13,7 +13,12 @@ const pool = mysql.createPool({
 let connectionFunctions = {
   findAll: () => {
     function findAll(resolve, reject) {
-      pool.query("SELECT * FROM Events", (err, locations) => {
+      const sql = `SELECT Events.*,
+      GROUP_CONCAT(Tags.tag_name SEPARATOR ', ') AS tags
+      FROM Events
+      INNER JOIN Event_tags ON Events.id = Event_tags.event_id
+      INNER JOIN Tags ON Event_tags.tag_id = Tags.id;`;
+      pool.query(sql, (err, locations) => {
         if (err) {
           reject(err);
         } else {
