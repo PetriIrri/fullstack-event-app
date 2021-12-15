@@ -11,7 +11,18 @@ const pool = mysql.createPool({
 
 //create database functions here
 let connectionFunctions = {
-  placeholder: "placeholder",
+  findAll: () => {
+    function findAll(resolve, reject) {
+      pool.query("SELECT * FROM Events", (err, locations) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(locations);
+        }
+      });
+    }
+    return new Promise(findAll);
+  },
 };
 
 module.exports = connectionFunctions;
