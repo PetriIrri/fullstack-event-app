@@ -17,7 +17,8 @@ let connectionFunctions = {
       GROUP_CONCAT(Tags.tag_name SEPARATOR ', ') AS tags
       FROM Events
       INNER JOIN Event_tags ON Events.id = Event_tags.event_id
-      INNER JOIN Tags ON Event_tags.tag_id = Tags.id;`;
+      INNER JOIN Tags ON Event_tags.tag_id = Tags.id
+      GROUP BY NULL;`;
       pool.query(sql, (err, locations) => {
         if (err) {
           reject(err);
@@ -30,14 +31,15 @@ let connectionFunctions = {
   },
   findById: (id) => {
     function findById(resolve, reject) {
-      // This will return a row of null if no record is found.
-      // It happens because of GROUP_CONCAT
+      // GROUP BY NULL is so that GROUP_CONCAT does
+      // not return null row when not finding a record.
       const sql = `SELECT Events.*,
       GROUP_CONCAT(Tags.tag_name SEPARATOR ', ') AS tags
       FROM Events
       INNER JOIN Event_tags ON Events.id = Event_tags.event_id
       INNER JOIN Tags ON Event_tags.tag_id = Tags.id
-      WHERE Events.id = ?;`;
+      WHERE Events.id = ?
+      GROUP BY NULL;`;
       pool.query(sql, id, (err, location) => {
         if (err) {
           reject(err);
