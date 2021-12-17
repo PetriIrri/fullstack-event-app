@@ -26,4 +26,20 @@ router.get("/:id([0-9]+$)", async (req, res) => {
   }
 });
 
+router.delete("/:id([0-9]+$)", async (req, res) => {
+  try {
+    let data = await connection.deleteById(req.params.id);
+    // if affectedRows = 0 no row was deleted. meaning no row
+    // with given id was found.
+    if (data.affectedRows == 0) {
+      res
+        .status(400)
+        .end(JSON.stringify({ msg: "no record with the given id found" }));
+    }
+    res.status(204).end();
+  } catch (err) {
+    res.status(400).end(JSON.stringify(err));
+  }
+});
+
 module.exports = router;
