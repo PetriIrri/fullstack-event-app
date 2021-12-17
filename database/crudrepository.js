@@ -50,6 +50,19 @@ let connectionFunctions = {
     }
     return new Promise(findById);
   },
+  deleteById: (id) => {
+    function deleteById(resolve, reject) {
+      const sql = "DELETE FROM Events WHERE id=?";
+      pool.query(sql, id, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    }
+    return new Promise(deleteById);
+  },
 };
 
 module.exports = connectionFunctions;
