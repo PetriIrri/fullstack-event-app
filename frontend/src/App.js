@@ -5,7 +5,9 @@ import Map from "./Map";
 function App() {
   return (
     <div className="App container-fluid">
-      <Navbar />
+      <div className="row">
+        <Navbar />
+      </div>
       <div className="row justify-content-center">
         <Map />
       </div>
