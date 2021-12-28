@@ -1,9 +1,12 @@
-.navbar {
-  background-color: #81d4fa;
-  text-align: center;
+body {
+  margin: 0px;
 }
 
 .leaflet-container {
   height: 80vh;
   background-color: transparent;
+}
+
+.App {
+  padding: 0px;
 }
