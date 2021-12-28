@@ -16,9 +16,9 @@ let connectionFunctions = {
       const sql = `SELECT Events.*,
       GROUP_CONCAT(Tags.tag_name SEPARATOR ', ') AS tags
       FROM Events
-      INNER JOIN Event_tags ON Events.id = Event_tags.event_id
-      INNER JOIN Tags ON Event_tags.tag_id = Tags.id
-      GROUP BY NULL;`;
+      LEFT JOIN Event_tags ON Events.id = Event_tags.event_id
+      LEFT JOIN Tags ON Event_tags.tag_id = Tags.id
+      GROUP BY Events.id;`;
       pool.query(sql, (err, locations) => {
         if (err) {
           reject(err);
