@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Navbar(props) {
   return (
     <nav className="navbar navbar-expand bg-info">
@@ -8,14 +9,14 @@ function Navbar(props) {
         <div className=" navbar-expand">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link text-dark" aria-current="page" href="./">
-                Linkki1
-              </a>
+              <Link to="/" className="nav-link text-dark">
+                Etusivu
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-dark" href="./">
-                Linkki2
-              </a>
+              <Link to="/test" className="nav-link text-dark">
+                Testi
+              </Link>
             </li>
           </ul>
         </div>
