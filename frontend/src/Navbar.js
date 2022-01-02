@@ -3,7 +3,7 @@ function Navbar(props) {
   return (
     <nav className="navbar navbar-expand bg-info">
       <div className="container-fluid">
-        <a className="navbar-brand text-dark" href="./">
+        <a className="navbar-brand text-dark" href="/">
           EventFin
         </a>
         <div className=" navbar-expand">
