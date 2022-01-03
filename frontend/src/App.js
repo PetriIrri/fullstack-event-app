@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar.js";
 import Map from "./Map";
-import EventDetails from "./Eventdetails.js";
+import EventDetails from "./EventDetails.js";
 
 function App() {
   return (
