@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { Marker } from "react-leaflet";
 import { fetchById } from "./api/EventApi";
 import Map from "./components/Map";
 
