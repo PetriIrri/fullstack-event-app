@@ -4,8 +4,8 @@ function Map(props) {
   return (
     <div className="col-md-10 leaflet-container">
       <MapContainer
-        center={[61.498145583592105, 23.765849800508377]}
-        zoom={13}
+        center={props.center}
+        zoom={props.zoom}
         scrollWheelZoom={true}
       >
         <TileLayer
