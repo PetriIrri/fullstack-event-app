@@ -6,3 +6,8 @@ export const fetchAll = async () => {
   let result = await axios.get(url);
   return result;
 };
+
+export const fetchById = async (id) => {
+  let result = await axios.get(url + id);
+  return result;
+};
