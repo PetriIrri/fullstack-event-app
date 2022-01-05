@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./Home.js";
 import EventDetails from "./EventDetails.js";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="*" element={<h1>404 page not foung</h1>} />
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );
