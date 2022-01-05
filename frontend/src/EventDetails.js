@@ -7,7 +7,7 @@ import Map from "./components/Map";
 function EventDetails(props) {
   const { id } = useParams();
   const [event = {}, setEvent] = useState([]);
-  const [isLoaded, setIsLoaded] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const getEvent = async () => {
@@ -28,6 +28,7 @@ function EventDetails(props) {
         latitude: data.latitude,
         longitude: data.longitude,
         marker: <Marker position={[data.latitude, data.longitude]}></Marker>,
+        center: [data.latitude, data.longitude],
       });
       setIsLoaded(true);
     };
@@ -64,7 +65,11 @@ function EventDetails(props) {
       <a href="/" className="btn btn-success text-light" role="button">
         Takaisin etusivulle
       </a>
-      {isLoaded ? <Map markers={event.marker} /> : ""}
+      {isLoaded ? (
+        <Map markers={event.marker} center={event.center} zoom="15" />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
