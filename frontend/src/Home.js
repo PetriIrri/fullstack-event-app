@@ -56,7 +56,11 @@ function Home(props) {
   return (
     <div className="col-md-10 leaflet-container">
       <h2>EventFin - Tapahtumat suomen kartalla</h2>
-      <Map markers={markers} />
+      <Map
+        markers={markers}
+        center={[61.497966052324585, 23.761352341677153]}
+        zoom="10"
+      />
     </div>
   );
 }
