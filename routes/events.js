@@ -44,6 +44,20 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Update One event
+router.put("/", async (req, res) => {
+  try {
+    let event = req.body;
+    console.log(event);
+    let result = await connection.updateEvent(event);
+    console.log(result);
+    // get the created records id from result
+    res.status(200).send(JSON.stringify({ msg: "Record updated" }));
+  } catch (err) {
+    res.status(400).end(JSON.stringify(err));
+  }
+});
+
 router.delete("/:id([0-9]+$)", async (req, res) => {
   try {
     let data = await connection.deleteById(req.params.id);
