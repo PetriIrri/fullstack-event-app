@@ -26,6 +26,19 @@ router.get("/:id([0-9]+$)", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    console.log(req.body);
+    let newEvent = req.body;
+    console.log(newEvent);
+    let result = await connection.addEvent(newEvent);
+    console.log(result);
+    res.status(201).send(JSON.stringify({ msg: "New record added" }));
+  } catch (err) {
+    res.status(400).end(JSON.stringify(err));
+  }
+});
+
 router.delete("/:id([0-9]+$)", async (req, res) => {
   try {
     let data = await connection.deleteById(req.params.id);
