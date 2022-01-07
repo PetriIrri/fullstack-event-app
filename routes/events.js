@@ -1,4 +1,5 @@
 const express = require("express");
+const { addTag } = require("../database/crudrepository");
 const router = express.Router();
 const connection = require("../database/crudrepository");
 
@@ -28,11 +29,15 @@ router.get("/:id([0-9]+$)", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
-    let newEvent = req.body;
-    console.log(newEvent);
+    // take tags to their own variable and create newEvent without them
+    const { tags, ...newEvent } = req.body;
     let result = await connection.addEvent(newEvent);
-    console.log(result);
+    // get the created records id from result
+    const eventId = result.insertId;
+    //loop through the given tags and add them.
+    for (let index = 0; index < tags.length; index++) {
+      await addTag({ event_id: eventId, tag_id: tags[index] });
+    }
     res.status(201).send(JSON.stringify({ msg: "New record added" }));
   } catch (err) {
     res.status(400).end(JSON.stringify(err));
