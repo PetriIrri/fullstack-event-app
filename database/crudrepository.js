@@ -50,6 +50,19 @@ let connectionFunctions = {
     }
     return new Promise(findById);
   },
+  addEvent: (event) => {
+    function save(resolve, reject) {
+      const query = `INSERT INTO Events SET ?`;
+      pool.query(query, event, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    }
+    return new Promise(save);
+  },
   deleteById: (id) => {
     function deleteById(resolve, reject) {
       const sql = "DELETE FROM Events WHERE id=?";
