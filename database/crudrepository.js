@@ -76,6 +76,20 @@ let connectionFunctions = {
     }
     return new Promise(save);
   },
+  updateEvent: (event) => {
+    function save(resolve, reject) {
+      const { id, ...eventValues } = event;
+      const query = `UPDATE Events SET ? WHERE id = ?`;
+      pool.query(query, [eventValues, id], (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    }
+    return new Promise(save);
+  },
   deleteById: (id) => {
     function deleteById(resolve, reject) {
       const sql = "DELETE FROM Events WHERE id=?";
