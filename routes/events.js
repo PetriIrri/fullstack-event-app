@@ -78,7 +78,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id([0-9]+$)", async (req, res) => {
   try {
-    checkValid(idSchema, req.params.id);
+    checkValid(idSchema, parseInt(req.params.id));
     let data = await connection.findById(req.params.id);
     if (data.length > 0) {
       res.status(200).send(data);
@@ -114,7 +114,7 @@ router.post("/", async (req, res) => {
 // Update One event
 router.put("/:id([0-9]+$)", async (req, res) => {
   try {
-    checkValid(idSchema, req.params.id);
+    checkValid(idSchema, parseInt(req.params.id));
     checkValid(updateEventSchema, req.body);
     if (req.body.tags) {
       const { tags, ...event } = req.body;
@@ -142,7 +142,7 @@ router.put("/:id([0-9]+$)", async (req, res) => {
 
 router.delete("/:id([0-9]+$)", async (req, res) => {
   try {
-    checkValid(idSchema, req.params.id);
+    checkValid(idSchema, parseInt(req.params.id));
     let data = await connection.deleteById(req.params.id);
     // if affectedRows = 0 no row was deleted. meaning no row
     // with given id was found.
