@@ -37,6 +37,25 @@ const newEventSchema = {
   additionalProperties: false,
 };
 
+const updateEventSchema = {
+  type: "object",
+  properties: {
+    event_name: { type: "string" },
+    event_organizer: { type: "string" },
+    event_url: { type: "string", format: "uri-template" },
+    short_description: { type: "string", maxLength: 500 },
+    full_description: { type: "string" },
+    start_date: { type: "string", format: "date" },
+    end_date: { type: "string", format: "date" },
+    latitude: { type: "number", minimum: -90, maximum: 90 },
+    longitude: { type: "number", minimum: -180, maximum: 180 },
+    address: { type: "string" },
+    city: { type: "string" },
+    tags: { type: "array", items: { type: "number" } },
+  },
+  additionalProperties: false,
+};
+
 function checkValid(schema, params) {
   v.validate(params, schema, {
     throwError: true,
@@ -92,6 +111,7 @@ router.post("/", async (req, res) => {
 // Update One event
 router.put("/:id([0-9]+$)", async (req, res) => {
   try {
+    checkValid(updateEventSchema, req.body);
     if (req.body.tags) {
       const { tags, ...event } = req.body;
       let result = await connection.updateEvent(event, req.params.id);
