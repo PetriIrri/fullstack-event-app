@@ -1,5 +1,4 @@
 const express = require("express");
-const { addTag } = require("../database/crudrepository");
 const router = express.Router();
 const connection = require("../database/crudrepository");
 
@@ -36,7 +35,7 @@ router.post("/", async (req, res) => {
     const eventId = result.insertId;
     //loop through the given tags and add them.
     for (let index = 0; index < tags.length; index++) {
-      await addTag({ event_id: eventId, tag_id: tags[index] });
+      await connection.addTag({ event_id: eventId, tag_id: tags[index] });
     }
     res.status(201).send(JSON.stringify({ msg: "New record added" }));
   } catch (err) {
@@ -54,7 +53,10 @@ router.put("/:id([0-9]+$)", async (req, res) => {
       result = await connection.deleteTags(req.params.id);
       console.log(result);
       for (let index = 0; index < tags.length; index++) {
-        await addTag({ event_id: req.params.id, tag_id: tags[index] });
+        await connection.addTag({
+          event_id: req.params.id,
+          tag_id: tags[index],
+        });
       }
     } else {
       let event = req.body;
