@@ -89,11 +89,10 @@ let connectionFunctions = {
     }
     return new Promise(del);
   },
-  updateEvent: (event) => {
+  updateEvent: (event, id) => {
     function save(resolve, reject) {
-      const { id, ...eventValues } = event;
       const query = `UPDATE Events SET ? WHERE id = ?`;
-      pool.query(query, [eventValues, id], (err, result) => {
+      pool.query(query, [event, id], (err, result) => {
         if (err) {
           reject(err);
         } else {
