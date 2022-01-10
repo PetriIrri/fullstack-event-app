@@ -45,13 +45,23 @@ router.post("/", async (req, res) => {
 });
 
 // Update One event
-router.put("/", async (req, res) => {
+router.put("/:id([0-9]+$)", async (req, res) => {
   try {
-    let event = req.body;
-    console.log(event);
-    let result = await connection.updateEvent(event);
-    console.log(result);
-    // get the created records id from result
+    if (req.body.tags) {
+      const { tags, ...event } = req.body;
+      let result = await connection.updateEvent(event, req.params.id);
+      console.log(result);
+      result = await connection.deleteTags(req.params.id);
+      console.log(result);
+      for (let index = 0; index < tags.length; index++) {
+        await addTag({ event_id: req.params.id, tag_id: tags[index] });
+      }
+    } else {
+      let event = req.body;
+      console.log(event);
+      let result = await connection.updateEvent(event, req.params.id);
+      console.log(result);
+    }
     res.status(200).send(JSON.stringify({ msg: "Record updated" }));
   } catch (err) {
     res.status(400).end(JSON.stringify(err));
