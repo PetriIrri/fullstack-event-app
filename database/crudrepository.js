@@ -76,6 +76,19 @@ let connectionFunctions = {
     }
     return new Promise(save);
   },
+  deleteTags: (id) => {
+    function del(resolve, reject) {
+      const query = `DELETE FROM Event_tags WHERE event_id=?`;
+      pool.query(query, id, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    }
+    return new Promise(del);
+  },
   updateEvent: (event) => {
     function save(resolve, reject) {
       const { id, ...eventValues } = event;
