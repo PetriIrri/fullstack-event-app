@@ -4,6 +4,39 @@ const connection = require("../database/crudrepository");
 var Validator = require("jsonschema").Validator;
 var v = new Validator();
 
+const newEventSchema = {
+  type: "object",
+  properties: {
+    event_name: { type: "string" },
+    event_organizer: { type: "string" },
+    event_url: { type: "string", format: "uri-template" },
+    short_description: { type: "string", maxLength: 500 },
+    full_description: { type: "string" },
+    start_date: { type: "string", format: "date" },
+    end_date: { type: "string", format: "date" },
+    latitude: { type: "number", minimum: -90, maximum: 90 },
+    longitude: { type: "number", minimum: -180, maximum: 180 },
+    address: { type: "string" },
+    city: { type: "string" },
+    tags: { type: "array", items: { type: "number" } },
+  },
+  required: [
+    "event_name",
+    "event_organizer",
+    "event_url",
+    "short_description",
+    "full_description",
+    "start_date",
+    "end_date",
+    "latitude",
+    "longitude",
+    "address",
+    "city",
+    "tags",
+  ],
+  additionalProperties: false,
+};
+
 function checkValid(schema, params) {
   v.validate(params, schema, {
     throwError: true,
