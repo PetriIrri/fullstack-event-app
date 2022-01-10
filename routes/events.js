@@ -72,6 +72,8 @@ router.get("/:id([0-9]+$)", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    //validate request body against newEventSchema
+    checkValid(newEventSchema, req.body);
     // take tags to their own variable and create newEvent without them
     const { tags, ...newEvent } = req.body;
     let result = await connection.addEvent(newEvent);
