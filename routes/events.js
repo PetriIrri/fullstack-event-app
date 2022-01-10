@@ -1,6 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../database/crudrepository");
+var Validator = require("jsonschema").Validator;
+var v = new Validator();
+
+function checkValid(schema, params) {
+  v.validate(params, schema, {
+    throwError: true,
+    allowUnknownAttributes: false,
+  }).valid == true
+    ? true
+    : false;
+}
 
 router.get("/", async (req, res) => {
   try {
