@@ -1,4 +1,6 @@
 import { MapContainer, TileLayer } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
+require("react-leaflet-markercluster/dist/styles.min.css");
 
 function Map(props) {
   return (
@@ -12,7 +14,7 @@ function Map(props) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {props.markers}
+        <MarkerClusterGroup>{props.markers}</MarkerClusterGroup>
       </MapContainer>
     </div>
   );
