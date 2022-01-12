@@ -13,11 +13,6 @@ function Navbar(props) {
                 Etusivu
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/test" className="nav-link text-dark">
-                Testi
-              </Link>
-            </li>
           </ul>
         </div>
       </div>
