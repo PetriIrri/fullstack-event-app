@@ -47,7 +47,7 @@ function EventDetails(props) {
       <p>
         Milloin:
         {event.startDate && event.endDate
-          ? `${event.startDate.getDate()}.${
+          ? ` ${event.startDate.getDate()}.${
               event.startDate.getMonth() + 1
             }.${event.startDate.getFullYear()}-
           ${event.endDate.getDate()}.${
