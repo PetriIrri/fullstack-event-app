@@ -58,8 +58,8 @@ function Home(props) {
       <h2>EventFin - Tapahtumat suomen kartalla</h2>
       <Map
         markers={markers}
-        center={[61.497966052324585, 23.761352341677153]}
-        zoom="10"
+        center={[62.99519982629759, 27.01100005601157]}
+        zoom="6"
       />
     </div>
   );
