@@ -13,7 +13,6 @@ function EventDetails(props) {
     const getEvent = async () => {
       let response = await fetchById(id);
       let data = response.data[0];
-      console.log(data);
       setEvent({
         name: data.event_name,
         organizer: data.event_organizer,

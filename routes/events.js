@@ -118,10 +118,8 @@ router.put("/:id([0-9]+$)", async (req, res) => {
     checkValid(updateEventSchema, req.body);
     if (req.body.tags) {
       const { tags, ...event } = req.body;
-      let result = await connection.updateEvent(event, req.params.id);
-      console.log(result);
-      result = await connection.deleteTags(req.params.id);
-      console.log(result);
+      await connection.updateEvent(event, req.params.id);
+      await connection.deleteTags(req.params.id);
       for (let index = 0; index < tags.length; index++) {
         await connection.addTag({
           event_id: req.params.id,
@@ -130,9 +128,7 @@ router.put("/:id([0-9]+$)", async (req, res) => {
       }
     } else {
       let event = req.body;
-      console.log(event);
-      let result = await connection.updateEvent(event, req.params.id);
-      console.log(result);
+      await connection.updateEvent(event, req.params.id);
     }
     res.status(200).send(JSON.stringify({ msg: "Record updated" }));
   } catch (err) {
