@@ -56,13 +56,17 @@ function EventDetails(props) {
       <p>{event.organizer ? event.organizer : ""}</p>
       <a
         href={event.url ? event.url : "/error"}
-        className="btn btn-primary text-light"
+        className="btn btn-primary text-light details-button"
         role="button"
       >
-        Tapahtuman järjestäjän sivut
+        Tapahtumanjärjestäjän sivut
       </a>
       <br />
-      <a href="/" className="btn btn-success text-light" role="button">
+      <a
+        href="/"
+        className="btn btn-success text-light details-button"
+        role="button"
+      >
         Takaisin etusivulle
       </a>
       {isLoaded ? (

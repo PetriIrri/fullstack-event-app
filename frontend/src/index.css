@@ -15,3 +15,7 @@ body {
 .App {
   padding: 0px;
 }
+
+.details-button {
+  margin-bottom: 8px;
+}
