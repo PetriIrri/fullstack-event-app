@@ -41,9 +41,11 @@ function EventDetails(props) {
       <h3>{event.shortDescription ? event.shortDescription : ""}</h3>
       <p>{event.fullDescription ? event.fullDescription : ""}</p>
       <p>
-        {event.city ? event.city : ""} {event.address ? event.address : ""}
+        Missä: {event.city ? event.city : ""},{" "}
+        {event.address ? event.address : ""}
       </p>
       <p>
+        Milloin:
         {event.startDate && event.endDate
           ? `${event.startDate.getDate()}.${
               event.startDate.getMonth() + 1
@@ -53,7 +55,7 @@ function EventDetails(props) {
             }.${event.endDate.getFullYear()}`
           : ""}
       </p>
-      <p>{event.organizer ? event.organizer : ""}</p>
+      <p>Järjestäjä: {event.organizer ? event.organizer : ""}</p>
       <a
         href={event.url ? event.url : "/error"}
         className="btn btn-primary text-light details-button"
