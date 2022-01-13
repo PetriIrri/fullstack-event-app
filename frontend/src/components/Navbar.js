@@ -1,4 +1,13 @@
 import { Link } from "react-router-dom";
+
+/**
+ * Component for showing navbar at the top of the page.
+ * @author Petri Irri
+ * @requires react-router-dom
+ * @component
+ * @example
+ * <Navbar />
+ */
 function Navbar(props) {
   return (
     <nav className="navbar navbar-expand bg-info">

@@ -1,12 +1,38 @@
+/**
+ * Module for frontend to show home page.
+ * @module src/Home
+ * @author Petri Irri
+ * @requires react
+ * @requires react-leaflet
+ * @requires module:src/api/EventApi
+ * @requires src/components/Map
+ */
+
 import { useState, useEffect } from "react";
 import { Marker, Popup } from "react-leaflet";
 import Map from "./components/Map";
-
 import { fetchAll } from "./api/EventApi";
 
+/**
+ * Component for creating a page with a leaflet Map
+ * and markers with popups.
+ * @namespace Home
+ * @property {Array} markers - UseState array for markers to populate map with.
+ * @component
+ * @example
+ * return (
+ *   <Home />
+ * )
+ */
 function Home(props) {
   const [markers, setMarkers] = useState([]);
 
+  /**
+   * Function to be run when EventDetails has been mounted.
+   * Uses module:src/api/EventApi function fetchAll to fetch data of all events
+   * @function useEffect
+   * @memberof module:src/Home~Home
+   */
   useEffect(() => {
     const getEvents = async () => {
       let newMarkers = [];

@@ -1,3 +1,14 @@
+/**
+ * Index module for frontend app.
+ * @module src/index
+ * @author Petri Irri
+ * @requires react
+ * @requires module:src/App
+ * @requires module:src/EventDetails
+ * @requires src/index.css
+ * @requires bootstrap/dist/css/bootstrap.min.css
+ * @requires src/reportWebVitals
+ */
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";

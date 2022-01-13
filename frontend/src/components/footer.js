@@ -1,3 +1,10 @@
+/**
+ * Component for showing footer at the bottom of the page.
+ * @author Petri Irri
+ * @component
+ * @example
+ * <Footer />
+ */
 function Footer(props) {
   return (
     <footer className="footer row mt-auto fixed-bottom py-3 bg-info">

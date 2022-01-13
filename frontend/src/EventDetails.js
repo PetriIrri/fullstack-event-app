@@ -1,14 +1,44 @@
+/**
+ * Module for frontend to show an events details.
+ * @module src/EventDetails
+ * @author Petri Irri
+ * @requires react
+ * @requires react-router-dom
+ * @requires react-leaflet
+ * @requires module:src/api/EventApi
+ * @requires src/components/Map
+ */
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Marker } from "react-leaflet";
 import { fetchById } from "./api/EventApi";
 import Map from "./components/Map";
 
+/**
+ * Component for creating a page with events details
+ * and a link to organizers website.
+ * @author Petri Irri
+ * @namespace EventDetails
+ * @property {number} id - Id of the event. Received from url params.
+ * @property {object} event - UseState object that has the event data.
+ * @property {boolean} isLoaded - UseState boolean that is used to check if page has loaded.
+ * @component
+ * @example
+ * return (<EventDetails />)
+ */
 function EventDetails(props) {
   const { id } = useParams();
   const [event = {}, setEvent] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  /**
+   * Function to be run when EventDetails has been mounted
+   * and when const id is updated. Uses module:src/api/EventApi function
+   * fetchById to fetch events data by id.
+   * @function useEffect
+   * @memberof module:src/EventDetails~EventDetails
+   */
   useEffect(() => {
     const getEvent = async () => {
       let response = await fetchById(id);
