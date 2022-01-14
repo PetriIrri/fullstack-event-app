@@ -13,7 +13,7 @@ Currently the development has finished. I might return later to update this app 
 Documentation can be found here:
 
 - [Backend](docs/index.html)
-- [Frontend](frontend/docs/index.html)
+- [Frontend](docs/frontend/index.html)
 
 ## Tech
 
