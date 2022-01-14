@@ -266,7 +266,7 @@ router.delete("/:id([0-9]+$)", async (req, res) => {
     // with given id was found.
     if (data.affectedRows == 0) {
       res
-        .status(400)
+        .status(404)
         .end(JSON.stringify({ msg: "no record with the given id found" }));
     }
     res.status(204).end();
