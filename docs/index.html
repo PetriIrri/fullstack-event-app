@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>fullstack-event-app</h1>
+<blockquote>
+<p>An app that shows events on a google map and tells the event details.</p>
+</blockquote>
+<p>This project is developed as part of TAMK backend coursework. The aim is to make a functioning fullstack app that shows information about different kinds of events on a map. The app has a functioning API that can be used to get information about the events stored inside database.</p>
+<h2>Current status</h2>
+<p>Currently the development has finished. I might return later to update this app with new features and improve the API.</p>
+<h2>Documentation</h2>
+<p>Documentation can be found here:</p>
+<ul>
+<li><a href="docs/index.html">Backend</a></li>
+<li><a href="frontend/docs/index.html">Frontend</a></li>
+</ul>
+<h2>Tech</h2>
+<ul>
+<li>Frontend with React
+<ul>
+<li>React Leaflet map</li>
+</ul>
+</li>
+<li>Backend with Node.js</li>
+<li>Bootstrap 5</li>
+</ul>
+<h2>Features</h2>
+<p>The app has the following features currently:</p>
+<ul>
+<li>Leaflet map with markers for events in finland.
+<ul>
+<li>Markers are clustered with <a href="https://github.com/Leaflet/Leaflet.markercluster">Leaflet.markercluster</a>.</li>
+<li>Marker popups have short description of the event in question.</li>
+</ul>
+</li>
+<li>Marker popups have links to the event details page.
+<ul>
+<li>Shows all the information of the event.</li>
+<li>Has link to event organizers page or another relevant page.</li>
+</ul>
+</li>
+<li>Functioning API that has basic CRUD functionality.</li>
+</ul>
+<h3>Screenshots</h3>
+<p>Pictures to be added.</p>
+<h2>API</h2>
+<p>This app has a working API with basic CRUD functionality. The API can be found at: https://eventfin.herokuapp.com/events/.</p>
+<p>Currently the API has support for the following:</p>
+<ul>
+<li><strong>GET</strong> all events from database along with their tags.</li>
+<li><strong>GET</strong> an event by id from database and its associated tags.</li>
+<li><strong>POST</strong> a new event to be added to the database.</li>
+<li><strong>PUT</strong> update an event in the database based on its id.</li>
+<li><strong>DELETE</strong> Delete and event based on its id.</li>
+</ul>
+<h3>How to use</h3>
+<h4>Get event data</h4>
+<p>To get data on all events make a GET request to https://eventfin.herokuapp.com/events/. This returns data of all events in database. On success the response will have status 200 and contain JSON of the events data. On error the database was not found and response will have status 404 and an error message.</p>
+<p>To get a single events data append the id of the event to the request url. for example to get data on an event with id 22: https://eventfin.herokuapp.com/events/22. On success the response will have status code of 200 and JSON output of the event requested. If the requested id is not valid, eq. not number and &gt; 0, the request will return with status 400 and error message. When an event with the given id is not found the response will have staus 404 and message telling a record with given id is not found.</p>
+<p>Example of JSON output.</p>
+<pre class="prettyprint source"><code>  {
+    &quot;id&quot;: 22,
+    &quot;event_name&quot;: &quot;Trish Morrissey: Autofiktiot&quot;,
+    &quot;event_organizer&quot;: &quot;Serlachius museot&quot;,
+    &quot;event_url&quot;: &quot;https://serlachius.fi/n%C3%A4yttely/trish-morrissey-autofiktiot/&quot;,
+    &quot;short_description&quot;: &quot;Kaksikymmentä vuotta kuvakerrontaa&quot;,
+    &quot;full_description&quot;: &quot;Irlantilaistaiteilija Trish Morisseyn (s. 1967) laaja näyttely esittelee yli kaksikymmenvuotisen työn tuloksia. Teoksissaan taiteilija nostaa esiin naisten kokemuksia ja heidän huomiotta jääviä tarinoitaan. Mukana on myös Sissi ja Ruth Serlachiuksen elämänkohtaloiden inspiroima uusi teoskokonaisuus. Trish Morissey syntyi Dublinissa ja asuu ja työskentelee Britanniassa. Performanssia, valokuvaa ja liikkuvaa kuvaa yhdistävässä tuotannossaan Morissey rakentaa ja esittää todellisia ja fiktiivisiä hahmoja lähtökohtanaan arkistotutkimukset ja omaelämäkerrallinen aineisto. Samalla hän tutkii käsityksiä perheestä, naisen rooleista ja naisvartalosta. Hän osallistui Serlachius-museoiden Kaukainen kosketus -näyttelyyn 2015 toteuttamalla sarjan valokuvia Serlachiuksen taidesäätiön valokuva-arkiston pohjalta. Nyt hänen ensimmäinen yksityisnäyttelynsä Suomessa tuo hänet jälleen Mänttään. Näyttelyn on kuratoinut Kate Best.&quot;,
+    &quot;start_date&quot;: &quot;2022-02-04T22:00:00.000Z&quot;,
+    &quot;end_date&quot;: &quot;2023-01-07T22:00:00.000Z&quot;,
+    &quot;latitude&quot;: 62.0278,
+    &quot;longitude&quot;: 24.6267,
+    &quot;address&quot;: &quot;Serlachius-museo Gustaf, R. Erik Serlachiuksen katu&quot;,
+    &quot;city&quot;: &quot;Mänttä&quot;,
+    &quot;tags&quot;: &quot;Museot, Taide, Näyttelyt&quot;
+  }
+</code></pre>
+<h4>Post event data</h4>
+<p>To post a new event to database: make a POST request to https://eventfin.herokuapp.com/events/. The request content-type needs to be application/json and contain json of the event to be added. Example of json body:</p>
+<pre class="prettyprint source"><code>&quot;event_name&quot;: &quot;Event name here&quot;,
+    &quot;event_organizer&quot;: &quot;events organizer here&quot;,
+    &quot;event_url&quot;: &quot;url to the organizers page.&quot;,
+    &quot;short_description&quot;: &quot;short description of the event&quot;,
+    &quot;full_description&quot;: &quot;full description that can be very long&quot;,
+    &quot;start_date&quot;: &quot;2022-01-19&quot;,
+    &quot;end_date&quot;: &quot;2022-01-19&quot;,
+    &quot;latitude&quot;: 66.4980250416848,
+    &quot;longitude&quot;: 25.75247616962397,
+    &quot;address&quot;: &quot;Address of the location where event is held&quot;,
+    &quot;city&quot;: &quot;city where event is held&quot;,
+    &quot;tags&quot;: [13]
+</code></pre>
+<p>To learn more about what is valid. Go <a href="docs/module-routes_events-newEventSchema.html">here</a> to see the schema that the json is validated against.
+The tag field has specific values that work.</p>
+<table>
+<thead>
+<tr>
+<th>Tag id</th>
+<th>Tag name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Testi</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Musiikki</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kaupunki &amp; kulttuuri</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Teatteri</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Museot</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Lapsille</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Viihde</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Taide</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Näyttelyt</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Urheilu &amp; liikunta</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Festivaalit</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Messut</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Kokoukset &amp; kongressit</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Luonto</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Retkeily ja patikointi</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Muu</td>
+</tr>
+</tbody>
+</table>
+<h4>Update event data</h4>
+<p>To update an events details make a PUT request to https://eventfin.herokuapp.com/events/:id with the id of the event to be updated. In the request body it is optional what fields you place. for example:</p>
+<pre class="prettyprint source"><code>{
+    &quot;event_name&quot;: &quot;test&quot;
+}
+</code></pre>
+<p>and
+{
+&quot;event_name&quot;: &quot;test&quot;,
+&quot;event_url&quot;: &quot;Url here&quot;
+}
+are both valid.
+To read more about the schema used to validate the request go <a href="docs/module-routes_events-updateEventSchema.html">here</a></p>
+<h4>Delete an event</h4>
+<p>To delete an event make a DELETE request to https://eventfin.herokuapp.com/events/:id with the id of the event to be deleted. On success the response returns status 204. On fail the response returns staus 404.</p>
+<h2>Planned features</h2>
+<p>These are all planned features that might be implemented or might not be implemented.</p>
+<ul>
+<li>Add possibility to get all tags from API.</li>
+<li>Add possibility to sort events based on end and start date. Also sort with tags.</li>
+<li>Add event calendar to the app.</li>
+<li>Authentication and autorization to the API.</li>
+<li>Pagination to the API</li>
+<li>Improve usability of the API and app.</li>
+</ul>
+<h2>Credits</h2>
+<p>This app is made by Petri Irri: petri.irri@gmail.com.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-database_crudrepository.html">database/crudrepository</a></li><li><a href="module-index.html">index</a></li><li><a href="module-routes_events.html">routes/events</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-database_crudrepository-connectionFunctions.html">connectionFunctions</a></li><li><a href="module-index-app.html">app</a></li><li><a href="module-routes_events-eventsRouter.html">eventsRouter</a></li><li><a href="module-routes_events-idSchema.html">idSchema</a></li><li><a href="module-routes_events-newEventSchema.html">newEventSchema</a></li><li><a href="module-routes_events-updateEventSchema.html">updateEventSchema</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Jan 14 2022 12:35:06 GMT+0200 (Itä-Euroopan normaaliaika)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
