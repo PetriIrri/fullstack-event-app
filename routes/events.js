@@ -251,7 +251,7 @@ router.put("/:id([0-9]+$)", async (req, res) => {
 
 /**
  * Route serving delete requests for deleting an event in database.
- * @name post/
+ * @name delete/:id
  * @function
  * @memberof module:routes/events~eventsRouter
  * @inner
