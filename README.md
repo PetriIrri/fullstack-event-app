@@ -40,6 +40,10 @@ The app has the following features currently:
 ![Marker popup picture](/pictures/Marker-popup.png)
 ![Event details page picture](/pictures/details.png)
 
+### Youtube video
+
+[![Youtube video](https://img.youtube.com/vi/HrM7JpUrbGU/0.jpg)](https://www.youtube.com/watch?v=HrM7JpUrbGU)
+
 ## API
 
 This app has a working API with basic CRUD functionality. The API can be found at: https://eventfin.herokuapp.com/events/.
