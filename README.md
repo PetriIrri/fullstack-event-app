@@ -12,8 +12,8 @@ Currently the development has finished. I might return later to update this app 
 
 Documentation can be found here:
 
-- [Backend](docs/index.html)
-- [Frontend](docs/frontend/index.html)
+- [Backend](https://petriirri.github.io/fullstack-event-app/)
+- [Frontend](https://petriirri.github.io/fullstack-event-app/frontend/index.html)
 
 ## Tech
 
@@ -97,7 +97,7 @@ To post a new event to database: make a POST request to https://eventfin.herokua
     "tags": [13]
 ```
 
-To learn more about what is valid. Go [here](docs/module-routes_events-newEventSchema.html) to see the schema that the json is validated against.
+To learn more about what is valid. Go [here](https://petriirri.github.io/fullstack-event-app/module-routes_events-newEventSchema.html) to see the schema that the json is validated against.
 The tag field has specific values that work.
 
 | Tag id | Tag name               |
@@ -135,7 +135,7 @@ and
 "event_url": "Url here"
 }
 are both valid.
-To read more about the schema used to validate the request go [here](docs/module-routes_events-updateEventSchema.html)
+To read more about the schema used to validate the request go [here](https://petriirri.github.io/fullstack-event-app/module-routes_events-updateEventSchema.html)
 
 #### Delete an event
 
