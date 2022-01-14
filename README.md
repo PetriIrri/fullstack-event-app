@@ -1,6 +1,6 @@
 # fullstack-event-app
 
-> An app that shows events on a google map and tells the event details.
+> An app that shows events on a React leaflet map and tells the event details.
 
 This project is developed as part of TAMK backend coursework. The aim is to make a functioning fullstack app that shows information about different kinds of events on a map. The app has a functioning API that can be used to get information about the events stored inside database.
 
@@ -56,7 +56,7 @@ Currently the API has support for the following:
 
 To get data on all events make a GET request to https://eventfin.herokuapp.com/events/. This returns data of all events in database. On success the response will have status 200 and contain JSON of the events data. On error the database was not found and response will have status 404 and an error message.
 
-To get a single events data append the id of the event to the request url. for example to get data on an event with id 22: https://eventfin.herokuapp.com/events/22. On success the response will have status code of 200 and JSON output of the event requested. If the requested id is not valid, eq. not number and > 0, the request will return with status 400 and error message. When an event with the given id is not found the response will have staus 404 and message telling a record with given id is not found.
+To get a single events data append the id of the event to the request url. For example to get data on an event with id 22: https://eventfin.herokuapp.com/events/22. On success the response will have status code of 200 and JSON output of the event requested. If the requested id is not valid, ex. not number and > 0, the request will return with status 400 and error message. When an event with the given id is not found the response will have staus 404 and message telling a record with given id is not found.
 
 Example of JSON output.
 
@@ -83,7 +83,8 @@ Example of JSON output.
 To post a new event to database: make a POST request to https://eventfin.herokuapp.com/events/. The request content-type needs to be application/json and contain json of the event to be added. Example of json body:
 
 ```
-"event_name": "Event name here",
+  {
+    "event_name": "Event name here",
     "event_organizer": "events organizer here",
     "event_url": "url to the organizers page.",
     "short_description": "short description of the event",
@@ -95,6 +96,7 @@ To post a new event to database: make a POST request to https://eventfin.herokua
     "address": "Address of the location where event is held",
     "city": "city where event is held",
     "tags": [13]
+  }
 ```
 
 To learn more about what is valid. Go [here](https://petriirri.github.io/fullstack-event-app/module-routes_events-newEventSchema.html) to see the schema that the json is validated against.
@@ -130,16 +132,20 @@ To update an events details make a PUT request to https://eventfin.herokuapp.com
 ```
 
 and
+
+```
 {
 "event_name": "test",
 "event_url": "Url here"
 }
+```
+
 are both valid.
 To read more about the schema used to validate the request go [here](https://petriirri.github.io/fullstack-event-app/module-routes_events-updateEventSchema.html)
 
 #### Delete an event
 
-To delete an event make a DELETE request to https://eventfin.herokuapp.com/events/:id with the id of the event to be deleted. On success the response returns status 204. On fail the response returns staus 404.
+To delete an event make a DELETE request to https://eventfin.herokuapp.com/events/:id with the id of the event to be deleted. On success the response returns status 204. On fail the response returns status 404.
 
 ## Planned features
 
