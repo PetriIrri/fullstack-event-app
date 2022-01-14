@@ -36,7 +36,9 @@ The app has the following features currently:
 
 ### Screenshots
 
-Pictures to be added.
+![Home screen of the app picture](/pictures/Home-screen.png)
+![Marker popup picture](/pictures/Marker-popup.png)
+![Event details page picture](/pictures/details.png)
 
 ## API
 
