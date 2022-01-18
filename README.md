@@ -4,6 +4,8 @@
 
 This project is developed as part of TAMK backend coursework. The aim is to make a functioning fullstack app that shows information about different kinds of events on a map. The app has a functioning API that can be used to get information about the events stored inside database.
 
+The app can be found running in heroku. [https://eventfin.herokuapp.com/](https://eventfin.herokuapp.com/)
+
 ## Current status
 
 Currently the development has finished. I might return later to update this app with new features and improve the API.
